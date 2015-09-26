@@ -2,7 +2,7 @@
 package org.usfirst.frc.team1124.robot.subsystems;
 
 import org.usfirst.frc.team1124.robot.RobotMap;
-import org.usfirst.frc.team1124.robot.commands.MecanumDriveWithJoystick;
+import org.usfirst.frc.team1124.robot.commands.GenericDriveWithJoystick;
 import org.usfirst.frc.team1124.tools.Tools;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -18,22 +18,22 @@ public class DriveTrain extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private SpeedController front_left_motor, back_left_motor, front_right_motor, back_right_motor;
+	private SpeedController flMotor, blMotor, frMotor, brMotor;
 	private RobotDrive drive;
 	
 	public DriveTrain() {
 		super();
-		front_left_motor = new Talon(RobotMap.front_left_talon);
-		back_left_motor = new Talon(RobotMap.back_left_talon);
-		front_right_motor = new Talon(RobotMap.front_right_talon);
-		back_right_motor = new Talon(RobotMap.back_right_talon);
-		drive = new RobotDrive(front_left_motor, back_left_motor, front_right_motor, back_right_motor);
+		flMotor = new Talon(RobotMap.flTalon);
+		blMotor = new Talon(RobotMap.blTalon);
+		frMotor = new Talon(RobotMap.frTalon);
+		brMotor = new Talon(RobotMap.brTalon);
+		drive = new RobotDrive(flMotor, blMotor, frMotor, brMotor);
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new MecanumDriveWithJoystick());
+    	setDefaultCommand(new GenericDriveWithJoystick());
     }
     public void driveM(double magnitude, double direction, double rotation) {
 		drive.mecanumDrive_Polar(magnitude, direction, rotation);

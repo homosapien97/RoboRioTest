@@ -8,11 +8,11 @@ import org.usfirst.frc.team1124.robot.Robot;
 /**
  *
  */
-public class ExampleCommand extends Command {
+public class SetDriveMode extends Command {
 
-    public ExampleCommand() {
+    public SetDriveMode(boolean arcade) {
         // Use requires() here to declare subsystem dependencies
-        this.requires(Robot.exampleSubsystem);
+        Robot.isArcade = arcade;
     }
 
     // Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class ExampleCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

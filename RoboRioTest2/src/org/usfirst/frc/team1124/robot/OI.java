@@ -41,7 +41,6 @@ public class OI {
 	private Joystick joy1 = new Joystick(0);
 	private JoystickButton driveModeButton = new JoystickButton(joy1, 0);
 	
-	
 	public OI() {
 		driveModeButton.whenPressed(new ToggleDriveMode());
 	}

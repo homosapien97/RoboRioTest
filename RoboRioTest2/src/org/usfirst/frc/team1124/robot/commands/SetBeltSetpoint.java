@@ -8,15 +8,30 @@ import org.usfirst.frc.team1124.robot.Robot;
 /**
  *
  */
-public class ExampleCommand extends Command {
-
-    public ExampleCommand() {
+public class SetBeltSetpoint extends Command {
+	double setpoint;
+	boolean safe;
+    public SetBeltSetpoint(double setpoint) {
         // Use requires() here to declare subsystem dependencies
-        this.requires(Robot.exampleSubsystem);
+        this.requires(Robot.belt);
+        this.setpoint = setpoint;
+        safe = Robot.safeBelt;
+    }
+    public SetBeltSetpoint(double setpoint, boolean safe) {
+        // Use requires() here to declare subsystem dependencies
+        this.requires(Robot.belt);
+        this.setpoint = setpoint;
+        this.safe = safe;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.belt.enable();
+    	if(safe) {
+    		Robot.belt.goToSafe(setpoint);
+    	} else {
+    		Robot.belt.goToUnsafe(setpoint);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,11 +40,12 @@ public class ExampleCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.belt.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	//Robot.belt.disable();
     }
 
     // Called when another command which requires one or more of the same
