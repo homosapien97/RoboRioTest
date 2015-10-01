@@ -38,15 +38,15 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-	private Joystick joy1 = new Joystick(0);
-	private JoystickButton driveModeButton = new JoystickButton(joy1, 0);
+	private Joystick joy0 = new Joystick(0);
+	private JoystickButton driveModeButton = new JoystickButton(joy0, 12);
 	
 	public OI() {
 		driveModeButton.whenPressed(new ToggleDriveMode());
 	}
 	
 	public Joystick getJoystick() {
-        return joy1;
+        return joy0;
     }
 }
 

@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team1124.robot.commands.ExampleCommand;
-import org.usfirst.frc.team1124.robot.subsystems.Belt;
 import org.usfirst.frc.team1124.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1124.robot.subsystems.ExampleSubsystem;
 
@@ -23,14 +22,12 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Belt belt = new Belt();
 	public static OI oi;
 	
 	public static boolean isArcade = false;
-	public static boolean safeBelt = true;
 
     Command autonomousCommand;
-
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
